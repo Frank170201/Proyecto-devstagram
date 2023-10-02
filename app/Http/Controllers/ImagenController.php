@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 
 class ImagenController extends Controller
 {
-    public function store()
+    public function store(Request $request)
     {
-        return "Desde imagen controller";
+        $input=$request->all();
+
+        return response()->json($input);
     }
 }
