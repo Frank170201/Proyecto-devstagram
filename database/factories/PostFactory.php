@@ -19,7 +19,7 @@ class PostFactory extends Factory
     {
         return [
             'titulo'=> $this->faker->sentence(5),
-            'descipcion'=> $this->faker->sentence(20),
+            'descripcion'=> $this->faker->sentence(20),
             'imagen'=> $this->faker->uuid() .'.jpg' ,
             'user_id' => User::all()->random()->id,
         ];
