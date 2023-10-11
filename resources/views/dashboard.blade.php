@@ -46,8 +46,8 @@
                 @endforeach
                 
             </div>
-            <div>
-                  {{ $posts->links('pagination::bootstrap-4') }}  
+            <div class="my-10">
+                  {{ $posts->links() }}  
             </div>
         @else
             <p class="text-gray-600 uppercase text-sm text-center font-bold">No hay posts</p>
