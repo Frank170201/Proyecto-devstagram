@@ -8,7 +8,8 @@
     <div class="flex justify-center">
         <div class="w-full md:w-8/12 lg:w-6/12 flex flex-col items-center md:flex-row">
             <div class="w-8/12 lg:w-6/12 px-5">
-                <img src="{{ asset('img/usuario.svg') }}" alt="Usuario">
+                <img src="{{ $user->imagen ? asset('perfiles') . '/' . $user->imagen : asset('img/usuario.svg') }}"
+                    alt="Imagen de Usuario">
             </div>
             <div
                 class="md:w-8/12 lg:w-6/12 px-5 flex flex-col items-center md:justify-center md:justify-center py-10 md:py-10">
@@ -17,9 +18,7 @@
 
                     @auth
                         @if ($user->id === auth()->user()->id)
-                            <a 
-                            href="{{ route('perfil.index',$user) }}"
-                            class="text-gray-500 hover:text-gray-600 cursos-pointer">
+                            <a href="{{ route('perfil.index') }}" class="text-gray-500 hover:text-gray-600 cursos-pointer">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                     stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -41,7 +40,7 @@
                 </p>
 
                 <p class="text-gray-800 text-sm mb-3 font-bold">
-                    0
+                    {{ $user->posts->count() }}
                     <span class="font-normal">Posts</span>
                 </p>
 

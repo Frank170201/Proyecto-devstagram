@@ -52,6 +52,6 @@ Route::post('/post/{post}/likes',[LikeController::class,'store'])->name('posts.l
 Route::delete('/post/{post}/likes',[LikeController::class,'destroy'])->name('posts.likes.destroy');
 
 //Rutas para el perfil 
-Route::get('{user:username}/editar-perfil',[PerfilController::class,'index'])->name('perfil.index');
+Route::get('{/editar-perfil',[PerfilController::class,'index'])->name('perfil.index');
 
-Route::post('{user:username}/editar-perfil',[PerfilController::class,'store'])->name('perfil.store');
+Route::post('/editar-perfil',[PerfilController::class,'store'])->name('perfil.store');
