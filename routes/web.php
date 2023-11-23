@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ComentarioController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginController;
@@ -55,3 +56,7 @@ Route::delete('/post/{post}/likes',[LikeController::class,'destroy'])->name('pos
 Route::get('{/editar-perfil',[PerfilController::class,'index'])->name('perfil.index');
 
 Route::post('/editar-perfil',[PerfilController::class,'store'])->name('perfil.store');
+
+//siguiendo usuarios
+Route::post('/{user:username}/follow',[FollowerController::class, 'store'])->name('users.follow');
+Route::delete('/{user:username}/unfollow',[FollowerController::class, 'destroy'])->name('users.unfollow');
