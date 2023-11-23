@@ -13,7 +13,7 @@
             </div>
             <div
                 class="md:w-8/12 lg:w-6/12 px-5 flex flex-col items-center md:justify-center md:justify-center py-10 md:py-10">
-                <div class="felx items-center gap-2">
+                <div class="flex items-center gap-2">
                     <p class="text-gray-700 text-2xl">{{ $user->username }}</p>
 
                     @auth
@@ -43,14 +43,27 @@
                     {{ $user->posts->count() }}
                     <span class="font-normal">Posts</span>
                 </p>
-                
-                <form action="" method="POST">
-                    @csrf
-                    <input type="submit"
-                        class="bg-blue-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
-                        value="Seguir">
-                </form>
+                @auth
+                @if ($user->id!== auth()->user()->id)
+                    
+               
+                    <form 
+                    action="{{ route('users.follow',$user) }}"
+                    method="POST">
+                        @csrf
+                        <input type="submit"
+                            class="bg-blue-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
+                            value="Seguir">
+                    </form>
 
+                    <form action="" method="POST">
+                        @csrf
+                        <input type="submit"
+                            class="bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
+                            value="Dejar de Seguir">
+                    </form>
+                    @endif
+                @endauth
             </div>
         </div>
     </div>
